@@ -1,6 +1,11 @@
 #include "TXLib.h"
 
-
+struct Moneta
+{
+int x;
+int y;
+HDC picture
+};
 struct Mario
 {
  int x;
@@ -25,7 +30,7 @@ void drawblock(Block block)
     txSetFillColor(TX_ORANGE);
 
     txRectangle(block.x,block.y,block.x+block.w,block.y+10);
-}
+};
 
 
 int main()
@@ -36,8 +41,10 @@ int main()
     HDC marios = txLoadImage ("картинки/марио/runMarioRight.bmp");
     HDC marioright = marios;
     HDC marioleft = txLoadImage ("картинки/марио/runMarioLeft.bmp");
+    HDC moneta = txLoadImage ("картинки/предметы/moneta.bmp");
     Mario mario{350,750,0,marios,marioright,marioleft, 750};
-
+    Moneta moneta{450,750};
+    int kolm=0;
     int Kolblock = 3;
     Block block[100];
     block[0] = {450, 550, 100};
@@ -56,6 +63,7 @@ while(!GetAsyncKeyState(VK_ESCAPE))
     }
 
     txSetFillColor(TX_BLACK);
+    txTransparentBlt (txDC(), moneta.x,moneta.y,35,38,moneta,0,0,0);
     txTransparentBlt (txDC(), mario.x,mario.y,92,100,mario.picture,0,0, TX_WHITE);
 
     if(GetAsyncKeyState('D'))
@@ -82,7 +90,7 @@ while(!GetAsyncKeyState(VK_ESCAPE))
     mario.y=mario.y+mario.vy;
     mario.vy=mario.vy+3;
 
-    sprintf(strmario, "v mario = %d", mario.vy);
+    sprintf(strmario, "Монет = %d", kolm);
     txTextOut(50, 50, strmario);
 
 
@@ -106,16 +114,14 @@ while(!GetAsyncKeyState(VK_ESCAPE))
         mario.floor = block[2].y-100;
 
 
-
-
-
-
-
     if(!(mario.x>block[0].x-block[0].w && mario.x<block[0].x+block[0].w) &&
        !(mario.x>block[1].x-block[1].w && mario.x<block[1].x+block[1].w) &&
        !(mario.x>block[2].x-block[2].w && mario.x<block[2].x+block[2].w))
         mario.floor = 750;
 
+    if(mario.x==450 and mario.y==750)
+        visible
+        kolm=kolm+1;
 
 
 
