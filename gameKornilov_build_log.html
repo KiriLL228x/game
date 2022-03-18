@@ -4,31 +4,14 @@
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" /></head>
 <body>
 <tt>
-Build started on: <u>02-03-2022 at 18:58.55</u><br />
-Build ended on: <u>02-03-2022 at 18:59.00</u><p />
+Build started on: <u>16-03-2022 at 18:42.55</u><br />
+Build ended on: <u>16-03-2022 at 18:43.03</u><p />
 <b>-------------- Build: Debug in gameKornilov (compiler: GNU GCC Compiler)---------------</b><br />
-mingw32-g++.exe -Wall -fexceptions  -g     -c C:\Kornilov\game\gameKornilov\main.cpp -o obj\Debug\main.o<br />
-C:\Kornilov\game\gameKornilov\main.cpp: In function 'int main()':<br />
-<font color="#ff0000">C:\Kornilov\game\gameKornilov\main.cpp:45:12: error: conflicting declaration 'Moneta moneta'</font><br />
-     Moneta moneta{450,750};<br />
-            ^<br />
-<font color="#ff0000">C:\Kornilov\game\gameKornilov\main.cpp:43:9: error: 'moneta' has a previous declaration as 'HDC__* moneta'</font><br />
-     HDC moneta = txLoadImage ("картинки/предметы/moneta.bmp");<br />
-         ^<br />
-<font color="#ff0000">C:\Kornilov\game\gameKornilov\main.cpp:65:38: error: request for member 'x' in 'moneta', which is of pointer type 'HDC' (maybe you meant to use '-&gt;' ?)</font><br />
-     txTransparentBlt (txDC(), moneta.x,moneta.y,35,38,moneta,0,0,0);<br />
-                                      ^<br />
-<font color="#ff0000">C:\Kornilov\game\gameKornilov\main.cpp:65:47: error: request for member 'y' in 'moneta', which is of pointer type 'HDC' (maybe you meant to use '-&gt;' ?)</font><br />
-     txTransparentBlt (txDC(), moneta.x,moneta.y,35,38,moneta,0,0,0);<br />
-                                               ^<br />
-<font color="#ff0000">C:\Kornilov\game\gameKornilov\main.cpp:122:9: error: 'visible' was not declared in this scope</font><br />
-         visible<br />
-         ^<br />
-<font color="#ff0000">C:\Kornilov\game\gameKornilov\main.cpp:123:9: error: expected ';' before 'kolm'</font><br />
-         kolm=kolm+1;<br />
-         ^<br />
-<font color="#a00000">Process terminated with status 1 (0 minutes, 4 seconds)</font><br />
-<font color="#a00000">6 errors, 0 warnings (0 minutes, 4 seconds)</font><br />
+mingw32-g++.exe -Wall -fexceptions  -g     -c D:\game\main.cpp -o obj\Debug\main.o<br />
+mingw32-g++.exe  -o bin\Debug\gameKornilov.exe obj\Debug\main.o     -mwindows<br />
+Output size is 1,86 MB<br />
+<font color="#0000ff">Process terminated with status 0 (0 minutes, 7 seconds)</font><br />
+<font color="#0000ff">0 errors, 0 warnings (0 minutes, 7 seconds)</font><br />
 </tt>
 </body>
 </html>

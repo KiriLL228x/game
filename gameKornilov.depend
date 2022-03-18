@@ -1,4 +1,7 @@
 # depslib dependency file v1.0
-1645806067 source:c:\kornilov\game\gamekornilov\main.cpp
+1646409461 source:c:\kornilov\game\gamekornilov\main.cpp
+	"TXLib.h"
+
+1647015094 source:d:\game\main.cpp
 	"TXLib.h"
 

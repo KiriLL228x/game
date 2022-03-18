@@ -1,0 +1,858 @@
+
+--------------------------------------------------
+TXLib сообщает:
+
+Программа: C:\Users\Gigabyte\Desktop\game\main.exe, файл: c:\codsb\codeblocks\mingw\include\txlib.h, строка: 13694, функция: bool {anonymous}::TX::txTransparentBlt(HDC, double, double, double, double, HDC, double, double, COLORREF),
+
+Сообщение: Параметр "sourceImage" неверен. Возможно, этот холст не создан, или уже уничтожен, или не загрузилась картинка.
+
+#1: TXLib [Ver: 00173a, Rev: 171, Date: 2021-10-03 23:49:44 +0400], Instance: 0x005072FC (32-bit), Flags: CMdRe0, Thread: 0x1814 (Main), GetLastError(): 13 (Недопустимые данные). 
+
+--------------------------------------------------
+Стек вызовов:
+
+# 0 0x00423572 in C:\Users\Gigabyte\Desktop\game\main.exe: txTransparentBlt() at c:/codsb/codeblocks/mingw/include/txlib.h (13694)
+
+# 1 0x0042CFB4 in C:\Users\Gigabyte\Desktop\game\main.exe: drawMoneta() at C:/Users/Gigabyte/Desktop/game/main.cpp (70):
+
+     68: if(moneta.visible)
+     69:     {
+=>   70:         txTransparentBlt (txDC(), moneta.x,moneta.y,35,38,moneta.picture,0,0,TX_WHITE);
+     71:     }
+     72: }
+
+# 2 0x0042D49C in C:\Users\Gigabyte\Desktop\game\main.exe: main() at C:/Users/Gigabyte/Desktop/game/main.cpp (120):
+
+    118:     for(int i=0; i<Kolmoneta; i++)
+    119:     {
+=>  120:     drawMoneta(moneta[i]);
+    121:     }
+    122: 
+
+--------------------------------------------------
+Стек вызовов TX:
+
+# 0 in bool {anonymous}::TX::txTransparentBlt(HDC, double, double, double, double, HDC, double, double, COLORREF) at c:\codsb\codeblocks\mingw\include\txlib.h (13694):
+
+  13692: 
+  13693: $1  if (_TX_HDC_FAILED (destImage))   return false;
+=>13694: $   if (_TX_HDC_FAILED (sourceImage)) return false;
+  13695: 
+  13696:     // Это автоматическое определение размеров картинки (точнее, HDC источника - source) с помощью txGetExtent().
+
+# 1 in void drawMoneta(Moneta) at C:\Users\Gigabyte\Desktop\game\main.cpp (70):
+
+     68: if(moneta.visible)
+     69:     {
+=>   70:         txTransparentBlt (txDC(), moneta.x,moneta.y,35,38,moneta.picture,0,0,TX_WHITE);
+     71:     }
+     72: }
+
+--------------------------------------------------
+Developed with:
+
+The Dumb Artist Library (TX Library)
+TXLib [Ver: 00173a, Rev: 171, Date: 2021-10-03 23:49:44 +0400]
+Copyright (C) Ded (Ilya Dedinsky, http://txlib.ru) <mail@txlib.ru>
+See license on: http://txlib.ru
+
+TXLib file:	c:\codsb\codeblocks\mingw\include\txlib.h
+Compiled:	Mar 18 2022 19:12:29, GNU g++ 4.8.1, std=201103L, MinGW Runtime 3.20, 32-bit, DEBUG
+Started:	Mar 18 2022 19:12:43
+
+Run file:	C:\Users\Gigabyte\Desktop\game\main.exe
+Directory:	C:\Users\Gigabyte\Desktop\game
+
+--------------------------------------------------
+
+--------------------------------------------------
+TXLib сообщает:
+
+Программа: C:\Users\Gigabyte\Desktop\game\main.exe, файл: c:\codsb\codeblocks\mingw\include\txlib.h, строка: 13694, функция: bool {anonymous}::TX::txTransparentBlt(HDC, double, double, double, double, HDC, double, double, COLORREF),
+
+Сообщение: Параметр "sourceImage" неверен. Возможно, этот холст не создан, или уже уничтожен, или не загрузилась картинка.
+
+#2: TXLib [Ver: 00173a, Rev: 171, Date: 2021-10-03 23:49:44 +0400], Instance: 0x005072FC (32-bit), Flags: CMdRe0, Thread: 0x1814 (Main), GetLastError(): 13 (Недопустимые данные). 
+
+--------------------------------------------------
+Стек вызовов:
+
+# 0 0x00423572 in C:\Users\Gigabyte\Desktop\game\main.exe: txTransparentBlt() at c:/codsb/codeblocks/mingw/include/txlib.h (13694)
+
+# 1 0x0042CFB4 in C:\Users\Gigabyte\Desktop\game\main.exe: drawMoneta() at C:/Users/Gigabyte/Desktop/game/main.cpp (70):
+
+     68: if(moneta.visible)
+     69:     {
+=>   70:         txTransparentBlt (txDC(), moneta.x,moneta.y,35,38,moneta.picture,0,0,TX_WHITE);
+     71:     }
+     72: }
+
+# 2 0x0042D49C in C:\Users\Gigabyte\Desktop\game\main.exe: main() at C:/Users/Gigabyte/Desktop/game/main.cpp (120):
+
+    118:     for(int i=0; i<Kolmoneta; i++)
+    119:     {
+=>  120:     drawMoneta(moneta[i]);
+    121:     }
+    122: 
+
+--------------------------------------------------
+Стек вызовов TX:
+
+# 0 in bool {anonymous}::TX::txTransparentBlt(HDC, double, double, double, double, HDC, double, double, COLORREF) at c:\codsb\codeblocks\mingw\include\txlib.h (13694):
+
+  13692: 
+  13693: $1  if (_TX_HDC_FAILED (destImage))   return false;
+=>13694: $   if (_TX_HDC_FAILED (sourceImage)) return false;
+  13695: 
+  13696:     // Это автоматическое определение размеров картинки (точнее, HDC источника - source) с помощью txGetExtent().
+
+# 1 in void drawMoneta(Moneta) at C:\Users\Gigabyte\Desktop\game\main.cpp (70):
+
+     68: if(moneta.visible)
+     69:     {
+=>   70:         txTransparentBlt (txDC(), moneta.x,moneta.y,35,38,moneta.picture,0,0,TX_WHITE);
+     71:     }
+     72: }
+
+--------------------------------------------------
+Developed with:
+
+The Dumb Artist Library (TX Library)
+TXLib [Ver: 00173a, Rev: 171, Date: 2021-10-03 23:49:44 +0400]
+Copyright (C) Ded (Ilya Dedinsky, http://txlib.ru) <mail@txlib.ru>
+See license on: http://txlib.ru
+
+TXLib file:	c:\codsb\codeblocks\mingw\include\txlib.h
+Compiled:	Mar 18 2022 19:12:29, GNU g++ 4.8.1, std=201103L, MinGW Runtime 3.20, 32-bit, DEBUG
+Started:	Mar 18 2022 19:12:43
+
+Run file:	C:\Users\Gigabyte\Desktop\game\main.exe
+Directory:	C:\Users\Gigabyte\Desktop\game
+
+--------------------------------------------------
+
+--------------------------------------------------
+TXLib сообщает:
+
+Программа: C:\Users\Gigabyte\Desktop\game\main.exe, файл: c:\codsb\codeblocks\mingw\include\txlib.h, строка: 13694, функция: bool {anonymous}::TX::txTransparentBlt(HDC, double, double, double, double, HDC, double, double, COLORREF),
+
+Сообщение: Параметр "sourceImage" неверен. Возможно, этот холст не создан, или уже уничтожен, или не загрузилась картинка.
+
+#3: TXLib [Ver: 00173a, Rev: 171, Date: 2021-10-03 23:49:44 +0400], Instance: 0x005072FC (32-bit), Flags: CMdRe0, Thread: 0x1814 (Main), GetLastError(): 13 (Недопустимые данные). 
+
+--------------------------------------------------
+Стек вызовов:
+
+# 0 0x00423572 in C:\Users\Gigabyte\Desktop\game\main.exe: txTransparentBlt() at c:/codsb/codeblocks/mingw/include/txlib.h (13694)
+
+# 1 0x0042CFB4 in C:\Users\Gigabyte\Desktop\game\main.exe: drawMoneta() at C:/Users/Gigabyte/Desktop/game/main.cpp (70):
+
+     68: if(moneta.visible)
+     69:     {
+=>   70:         txTransparentBlt (txDC(), moneta.x,moneta.y,35,38,moneta.picture,0,0,TX_WHITE);
+     71:     }
+     72: }
+
+# 2 0x0042D49C in C:\Users\Gigabyte\Desktop\game\main.exe: main() at C:/Users/Gigabyte/Desktop/game/main.cpp (120):
+
+    118:     for(int i=0; i<Kolmoneta; i++)
+    119:     {
+=>  120:     drawMoneta(moneta[i]);
+    121:     }
+    122: 
+
+--------------------------------------------------
+Стек вызовов TX:
+
+# 0 in bool {anonymous}::TX::txTransparentBlt(HDC, double, double, double, double, HDC, double, double, COLORREF) at c:\codsb\codeblocks\mingw\include\txlib.h (13694):
+
+  13692: 
+  13693: $1  if (_TX_HDC_FAILED (destImage))   return false;
+=>13694: $   if (_TX_HDC_FAILED (sourceImage)) return false;
+  13695: 
+  13696:     // Это автоматическое определение размеров картинки (точнее, HDC источника - source) с помощью txGetExtent().
+
+# 1 in void drawMoneta(Moneta) at C:\Users\Gigabyte\Desktop\game\main.cpp (70):
+
+     68: if(moneta.visible)
+     69:     {
+=>   70:         txTransparentBlt (txDC(), moneta.x,moneta.y,35,38,moneta.picture,0,0,TX_WHITE);
+     71:     }
+     72: }
+
+--------------------------------------------------
+Developed with:
+
+The Dumb Artist Library (TX Library)
+TXLib [Ver: 00173a, Rev: 171, Date: 2021-10-03 23:49:44 +0400]
+Copyright (C) Ded (Ilya Dedinsky, http://txlib.ru) <mail@txlib.ru>
+See license on: http://txlib.ru
+
+TXLib file:	c:\codsb\codeblocks\mingw\include\txlib.h
+Compiled:	Mar 18 2022 19:12:29, GNU g++ 4.8.1, std=201103L, MinGW Runtime 3.20, 32-bit, DEBUG
+Started:	Mar 18 2022 19:12:43
+
+Run file:	C:\Users\Gigabyte\Desktop\game\main.exe
+Directory:	C:\Users\Gigabyte\Desktop\game
+
+--------------------------------------------------
+
+--------------------------------------------------
+TXLib сообщает:
+
+Программа: C:\Users\Gigabyte\Desktop\game\main.exe, файл: c:\codsb\codeblocks\mingw\include\txlib.h, строка: 13694, функция: bool {anonymous}::TX::txTransparentBlt(HDC, double, double, double, double, HDC, double, double, COLORREF),
+
+Сообщение: Параметр "sourceImage" неверен. Возможно, этот холст не создан, или уже уничтожен, или не загрузилась картинка.
+
+#4: TXLib [Ver: 00173a, Rev: 171, Date: 2021-10-03 23:49:44 +0400], Instance: 0x005072FC (32-bit), Flags: CMdRe0, Thread: 0x1814 (Main), GetLastError(): 13 (Недопустимые данные). 
+
+--------------------------------------------------
+Стек вызовов:
+
+# 0 0x00423572 in C:\Users\Gigabyte\Desktop\game\main.exe: txTransparentBlt() at c:/codsb/codeblocks/mingw/include/txlib.h (13694)
+
+# 1 0x0042CFB4 in C:\Users\Gigabyte\Desktop\game\main.exe: drawMoneta() at C:/Users/Gigabyte/Desktop/game/main.cpp (70):
+
+     68: if(moneta.visible)
+     69:     {
+=>   70:         txTransparentBlt (txDC(), moneta.x,moneta.y,35,38,moneta.picture,0,0,TX_WHITE);
+     71:     }
+     72: }
+
+# 2 0x0042D49C in C:\Users\Gigabyte\Desktop\game\main.exe: main() at C:/Users/Gigabyte/Desktop/game/main.cpp (120):
+
+    118:     for(int i=0; i<Kolmoneta; i++)
+    119:     {
+=>  120:     drawMoneta(moneta[i]);
+    121:     }
+    122: 
+
+--------------------------------------------------
+Стек вызовов TX:
+
+# 0 in bool {anonymous}::TX::txTransparentBlt(HDC, double, double, double, double, HDC, double, double, COLORREF) at c:\codsb\codeblocks\mingw\include\txlib.h (13694):
+
+  13692: 
+  13693: $1  if (_TX_HDC_FAILED (destImage))   return false;
+=>13694: $   if (_TX_HDC_FAILED (sourceImage)) return false;
+  13695: 
+  13696:     // Это автоматическое определение размеров картинки (точнее, HDC источника - source) с помощью txGetExtent().
+
+# 1 in void drawMoneta(Moneta) at C:\Users\Gigabyte\Desktop\game\main.cpp (70):
+
+     68: if(moneta.visible)
+     69:     {
+=>   70:         txTransparentBlt (txDC(), moneta.x,moneta.y,35,38,moneta.picture,0,0,TX_WHITE);
+     71:     }
+     72: }
+
+--------------------------------------------------
+Developed with:
+
+The Dumb Artist Library (TX Library)
+TXLib [Ver: 00173a, Rev: 171, Date: 2021-10-03 23:49:44 +0400]
+Copyright (C) Ded (Ilya Dedinsky, http://txlib.ru) <mail@txlib.ru>
+See license on: http://txlib.ru
+
+TXLib file:	c:\codsb\codeblocks\mingw\include\txlib.h
+Compiled:	Mar 18 2022 19:12:29, GNU g++ 4.8.1, std=201103L, MinGW Runtime 3.20, 32-bit, DEBUG
+Started:	Mar 18 2022 19:12:43
+
+Run file:	C:\Users\Gigabyte\Desktop\game\main.exe
+Directory:	C:\Users\Gigabyte\Desktop\game
+
+--------------------------------------------------
+
+--------------------------------------------------
+TXLib сообщает:
+
+Программа: C:\Users\Gigabyte\Desktop\game\main.exe, файл: c:\codsb\codeblocks\mingw\include\txlib.h, строка: 13694, функция: bool {anonymous}::TX::txTransparentBlt(HDC, double, double, double, double, HDC, double, double, COLORREF),
+
+Сообщение: Параметр "sourceImage" неверен. Возможно, этот холст не создан, или уже уничтожен, или не загрузилась картинка.
+
+#1: TXLib [Ver: 00173a, Rev: 171, Date: 2021-10-03 23:49:44 +0400], Instance: 0x005072FC (32-bit), Flags: CMdRe0, Thread: 0x2600 (Main), GetLastError(): 13 (Недопустимые данные). 
+
+--------------------------------------------------
+Стек вызовов:
+
+# 0 0x00423572 in C:\Users\Gigabyte\Desktop\game\main.exe: txTransparentBlt() at c:/codsb/codeblocks/mingw/include/txlib.h (13694)
+
+# 1 0x0042CFB4 in C:\Users\Gigabyte\Desktop\game\main.exe: drawMoneta() at C:/Users/Gigabyte/Desktop/game/main.cpp (70):
+
+     68: if(moneta.visible)
+     69:     {
+=>   70:         txTransparentBlt (txDC(), moneta.x,moneta.y,35,38,moneta.picture,0,0,TX_WHITE);
+     71:     }
+     72: }
+
+# 2 0x0042D49C in C:\Users\Gigabyte\Desktop\game\main.exe: main() at C:/Users/Gigabyte/Desktop/game/main.cpp (120):
+
+    118:     for(int i=0; i<Kolmoneta; i++)
+    119:     {
+=>  120:     drawMoneta(moneta[i]);
+    121:     }
+    122: 
+
+--------------------------------------------------
+Стек вызовов TX:
+
+# 0 in bool {anonymous}::TX::txTransparentBlt(HDC, double, double, double, double, HDC, double, double, COLORREF) at c:\codsb\codeblocks\mingw\include\txlib.h (13694):
+
+  13692: 
+  13693: $1  if (_TX_HDC_FAILED (destImage))   return false;
+=>13694: $   if (_TX_HDC_FAILED (sourceImage)) return false;
+  13695: 
+  13696:     // Это автоматическое определение размеров картинки (точнее, HDC источника - source) с помощью txGetExtent().
+
+# 1 in void drawMoneta(Moneta) at C:\Users\Gigabyte\Desktop\game\main.cpp (70):
+
+     68: if(moneta.visible)
+     69:     {
+=>   70:         txTransparentBlt (txDC(), moneta.x,moneta.y,35,38,moneta.picture,0,0,TX_WHITE);
+     71:     }
+     72: }
+
+--------------------------------------------------
+Developed with:
+
+The Dumb Artist Library (TX Library)
+TXLib [Ver: 00173a, Rev: 171, Date: 2021-10-03 23:49:44 +0400]
+Copyright (C) Ded (Ilya Dedinsky, http://txlib.ru) <mail@txlib.ru>
+See license on: http://txlib.ru
+
+TXLib file:	c:\codsb\codeblocks\mingw\include\txlib.h
+Compiled:	Mar 18 2022 19:13:19, GNU g++ 4.8.1, std=201103L, MinGW Runtime 3.20, 32-bit, DEBUG
+Started:	Mar 18 2022 19:13:23
+
+Run file:	C:\Users\Gigabyte\Desktop\game\main.exe
+Directory:	C:\Users\Gigabyte\Desktop\game
+
+--------------------------------------------------
+
+--------------------------------------------------
+TXLib сообщает:
+
+Программа: C:\Users\Gigabyte\Desktop\game\main.exe, файл: c:\codsb\codeblocks\mingw\include\txlib.h, строка: 13694, функция: bool {anonymous}::TX::txTransparentBlt(HDC, double, double, double, double, HDC, double, double, COLORREF),
+
+Сообщение: Параметр "sourceImage" неверен. Возможно, этот холст не создан, или уже уничтожен, или не загрузилась картинка.
+
+#2: TXLib [Ver: 00173a, Rev: 171, Date: 2021-10-03 23:49:44 +0400], Instance: 0x005072FC (32-bit), Flags: CMdRe0, Thread: 0x2600 (Main), GetLastError(): 13 (Недопустимые данные). 
+
+--------------------------------------------------
+Стек вызовов:
+
+# 0 0x00423572 in C:\Users\Gigabyte\Desktop\game\main.exe: txTransparentBlt() at c:/codsb/codeblocks/mingw/include/txlib.h (13694)
+
+# 1 0x0042CFB4 in C:\Users\Gigabyte\Desktop\game\main.exe: drawMoneta() at C:/Users/Gigabyte/Desktop/game/main.cpp (70):
+
+     68: if(moneta.visible)
+     69:     {
+=>   70:         txTransparentBlt (txDC(), moneta.x,moneta.y,35,38,moneta.picture,0,0,TX_WHITE);
+     71:     }
+     72: }
+
+# 2 0x0042D49C in C:\Users\Gigabyte\Desktop\game\main.exe: main() at C:/Users/Gigabyte/Desktop/game/main.cpp (120):
+
+    118:     for(int i=0; i<Kolmoneta; i++)
+    119:     {
+=>  120:     drawMoneta(moneta[i]);
+    121:     }
+    122: 
+
+--------------------------------------------------
+Стек вызовов TX:
+
+# 0 in bool {anonymous}::TX::txTransparentBlt(HDC, double, double, double, double, HDC, double, double, COLORREF) at c:\codsb\codeblocks\mingw\include\txlib.h (13694):
+
+  13692: 
+  13693: $1  if (_TX_HDC_FAILED (destImage))   return false;
+=>13694: $   if (_TX_HDC_FAILED (sourceImage)) return false;
+  13695: 
+  13696:     // Это автоматическое определение размеров картинки (точнее, HDC источника - source) с помощью txGetExtent().
+
+# 1 in void drawMoneta(Moneta) at C:\Users\Gigabyte\Desktop\game\main.cpp (70):
+
+     68: if(moneta.visible)
+     69:     {
+=>   70:         txTransparentBlt (txDC(), moneta.x,moneta.y,35,38,moneta.picture,0,0,TX_WHITE);
+     71:     }
+     72: }
+
+--------------------------------------------------
+Developed with:
+
+The Dumb Artist Library (TX Library)
+TXLib [Ver: 00173a, Rev: 171, Date: 2021-10-03 23:49:44 +0400]
+Copyright (C) Ded (Ilya Dedinsky, http://txlib.ru) <mail@txlib.ru>
+See license on: http://txlib.ru
+
+TXLib file:	c:\codsb\codeblocks\mingw\include\txlib.h
+Compiled:	Mar 18 2022 19:13:19, GNU g++ 4.8.1, std=201103L, MinGW Runtime 3.20, 32-bit, DEBUG
+Started:	Mar 18 2022 19:13:23
+
+Run file:	C:\Users\Gigabyte\Desktop\game\main.exe
+Directory:	C:\Users\Gigabyte\Desktop\game
+
+--------------------------------------------------
+
+--------------------------------------------------
+TXLib сообщает:
+
+Программа: C:\Users\Gigabyte\Desktop\game\main.exe, файл: c:\codsb\codeblocks\mingw\include\txlib.h, строка: 13694, функция: bool {anonymous}::TX::txTransparentBlt(HDC, double, double, double, double, HDC, double, double, COLORREF),
+
+Сообщение: Параметр "sourceImage" неверен. Возможно, этот холст не создан, или уже уничтожен, или не загрузилась картинка.
+
+#1: TXLib [Ver: 00173a, Rev: 171, Date: 2021-10-03 23:49:44 +0400], Instance: 0x005072FC (32-bit), Flags: CMdRe0, Thread: 0x19B4 (Main), GetLastError(): 13 (Недопустимые данные). 
+
+--------------------------------------------------
+Стек вызовов:
+
+# 0 0x00423572 in C:\Users\Gigabyte\Desktop\game\main.exe: txTransparentBlt() at c:/codsb/codeblocks/mingw/include/txlib.h (13694)
+
+# 1 0x0042CFB4 in C:\Users\Gigabyte\Desktop\game\main.exe: drawMoneta() at C:/Users/Gigabyte/Desktop/game/main.cpp (70):
+
+     68: if(moneta.visible)
+     69:     {
+=>   70:         txTransparentBlt (txDC(), moneta.x,moneta.y,35,38,moneta.picture,0,0,TX_WHITE);
+     71:     }
+     72: }
+
+# 2 0x0042D49C in C:\Users\Gigabyte\Desktop\game\main.exe: main() at C:/Users/Gigabyte/Desktop/game/main.cpp (120):
+
+    118:     for(int i=0; i<Kolmoneta; i++)
+    119:     {
+=>  120:     drawMoneta(moneta[i]);
+    121:     }
+    122: 
+
+--------------------------------------------------
+Стек вызовов TX:
+
+# 0 in bool {anonymous}::TX::txTransparentBlt(HDC, double, double, double, double, HDC, double, double, COLORREF) at c:\codsb\codeblocks\mingw\include\txlib.h (13694):
+
+  13692: 
+  13693: $1  if (_TX_HDC_FAILED (destImage))   return false;
+=>13694: $   if (_TX_HDC_FAILED (sourceImage)) return false;
+  13695: 
+  13696:     // Это автоматическое определение размеров картинки (точнее, HDC источника - source) с помощью txGetExtent().
+
+# 1 in void drawMoneta(Moneta) at C:\Users\Gigabyte\Desktop\game\main.cpp (70):
+
+     68: if(moneta.visible)
+     69:     {
+=>   70:         txTransparentBlt (txDC(), moneta.x,moneta.y,35,38,moneta.picture,0,0,TX_WHITE);
+     71:     }
+     72: }
+
+--------------------------------------------------
+Developed with:
+
+The Dumb Artist Library (TX Library)
+TXLib [Ver: 00173a, Rev: 171, Date: 2021-10-03 23:49:44 +0400]
+Copyright (C) Ded (Ilya Dedinsky, http://txlib.ru) <mail@txlib.ru>
+See license on: http://txlib.ru
+
+TXLib file:	c:\codsb\codeblocks\mingw\include\txlib.h
+Compiled:	Mar 18 2022 20:26:28, GNU g++ 4.8.1, std=201103L, MinGW Runtime 3.20, 32-bit, DEBUG
+Started:	Mar 18 2022 20:26:32
+
+Run file:	C:\Users\Gigabyte\Desktop\game\main.exe
+Directory:	C:\Users\Gigabyte\Desktop\game
+
+--------------------------------------------------
+
+--------------------------------------------------
+TXLib сообщает:
+
+Программа: C:\Users\Gigabyte\Desktop\game\main.exe, файл: c:\codsb\codeblocks\mingw\include\txlib.h, строка: 13694, функция: bool {anonymous}::TX::txTransparentBlt(HDC, double, double, double, double, HDC, double, double, COLORREF),
+
+Сообщение: Параметр "sourceImage" неверен. Возможно, этот холст не создан, или уже уничтожен, или не загрузилась картинка.
+
+#1: TXLib [Ver: 00173a, Rev: 171, Date: 2021-10-03 23:49:44 +0400], Instance: 0x005072FC (32-bit), Flags: CMdRe0, Thread: 0x31B4 (Main), GetLastError(): 13 (Недопустимые данные). 
+
+--------------------------------------------------
+Стек вызовов:
+
+# 0 0x00423572 in C:\Users\Gigabyte\Desktop\game\main.exe: txTransparentBlt() at c:/codsb/codeblocks/mingw/include/txlib.h (13694)
+
+# 1 0x0042CFB4 in C:\Users\Gigabyte\Desktop\game\main.exe: drawMoneta() at C:/Users/Gigabyte/Desktop/game/main.cpp (69):
+
+     67: if(moneta.visible)
+     68:     {
+=>   69:         txTransparentBlt (txDC(), moneta.x,moneta.y,30,28,moneta.picture,0,0,TX_WHITE);
+     70:     }
+     71: }
+
+# 2 0x0042D49C in C:\Users\Gigabyte\Desktop\game\main.exe: main() at C:/Users/Gigabyte/Desktop/game/main.cpp (119):
+
+    117:     for(int i=0; i<Kolmoneta; i++)
+    118:     {
+=>  119:     drawMoneta(moneta[i]);
+    120:     }
+    121: 
+
+--------------------------------------------------
+Стек вызовов TX:
+
+# 0 in bool {anonymous}::TX::txTransparentBlt(HDC, double, double, double, double, HDC, double, double, COLORREF) at c:\codsb\codeblocks\mingw\include\txlib.h (13694):
+
+  13692: 
+  13693: $1  if (_TX_HDC_FAILED (destImage))   return false;
+=>13694: $   if (_TX_HDC_FAILED (sourceImage)) return false;
+  13695: 
+  13696:     // Это автоматическое определение размеров картинки (точнее, HDC источника - source) с помощью txGetExtent().
+
+# 1 in void drawMoneta(Moneta) at C:\Users\Gigabyte\Desktop\game\main.cpp (69):
+
+     67: if(moneta.visible)
+     68:     {
+=>   69:         txTransparentBlt (txDC(), moneta.x,moneta.y,30,28,moneta.picture,0,0,TX_WHITE);
+     70:     }
+     71: }
+
+--------------------------------------------------
+Developed with:
+
+The Dumb Artist Library (TX Library)
+TXLib [Ver: 00173a, Rev: 171, Date: 2021-10-03 23:49:44 +0400]
+Copyright (C) Ded (Ilya Dedinsky, http://txlib.ru) <mail@txlib.ru>
+See license on: http://txlib.ru
+
+TXLib file:	c:\codsb\codeblocks\mingw\include\txlib.h
+Compiled:	Mar 18 2022 20:28:32, GNU g++ 4.8.1, std=201103L, MinGW Runtime 3.20, 32-bit, DEBUG
+Started:	Mar 18 2022 20:28:37
+
+Run file:	C:\Users\Gigabyte\Desktop\game\main.exe
+Directory:	C:\Users\Gigabyte\Desktop\game
+
+--------------------------------------------------
+
+--------------------------------------------------
+TXLib сообщает:
+
+Программа: C:\Users\Gigabyte\Desktop\game\main.exe, файл: c:\codsb\codeblocks\mingw\include\txlib.h, строка: 13694, функция: bool {anonymous}::TX::txTransparentBlt(HDC, double, double, double, double, HDC, double, double, COLORREF),
+
+Сообщение: Параметр "sourceImage" неверен. Возможно, этот холст не создан, или уже уничтожен, или не загрузилась картинка.
+
+#1: TXLib [Ver: 00173a, Rev: 171, Date: 2021-10-03 23:49:44 +0400], Instance: 0x005072FC (32-bit), Flags: CMdRe0, Thread: 0xEF4 (Main), GetLastError(): 13 (Недопустимые данные). 
+
+--------------------------------------------------
+Стек вызовов:
+
+# 0 0x00423572 in C:\Users\Gigabyte\Desktop\game\main.exe: txTransparentBlt() at c:/codsb/codeblocks/mingw/include/txlib.h (13694)
+
+# 1 0x0042CFB4 in C:\Users\Gigabyte\Desktop\game\main.exe: drawMoneta() at C:/Users/Gigabyte/Desktop/game/main.cpp (69):
+
+     67: if(moneta.visible)
+     68:     {
+=>   69:         txTransparentBlt (txDC(), moneta.x,moneta.y,30,28,moneta.picture,0,0,TX_WHITE);
+     70:     }
+     71: }
+
+# 2 0x0042D49C in C:\Users\Gigabyte\Desktop\game\main.exe: main() at C:/Users/Gigabyte/Desktop/game/main.cpp (119):
+
+    117:     for(int i=0; i<Kolmoneta; i++)
+    118:     {
+=>  119:     drawMoneta(moneta[i]);
+    120:     }
+    121: 
+
+--------------------------------------------------
+Стек вызовов TX:
+
+# 0 in bool {anonymous}::TX::txTransparentBlt(HDC, double, double, double, double, HDC, double, double, COLORREF) at c:\codsb\codeblocks\mingw\include\txlib.h (13694):
+
+  13692: 
+  13693: $1  if (_TX_HDC_FAILED (destImage))   return false;
+=>13694: $   if (_TX_HDC_FAILED (sourceImage)) return false;
+  13695: 
+  13696:     // Это автоматическое определение размеров картинки (точнее, HDC источника - source) с помощью txGetExtent().
+
+# 1 in void drawMoneta(Moneta) at C:\Users\Gigabyte\Desktop\game\main.cpp (69):
+
+     67: if(moneta.visible)
+     68:     {
+=>   69:         txTransparentBlt (txDC(), moneta.x,moneta.y,30,28,moneta.picture,0,0,TX_WHITE);
+     70:     }
+     71: }
+
+--------------------------------------------------
+Developed with:
+
+The Dumb Artist Library (TX Library)
+TXLib [Ver: 00173a, Rev: 171, Date: 2021-10-03 23:49:44 +0400]
+Copyright (C) Ded (Ilya Dedinsky, http://txlib.ru) <mail@txlib.ru>
+See license on: http://txlib.ru
+
+TXLib file:	c:\codsb\codeblocks\mingw\include\txlib.h
+Compiled:	Mar 18 2022 20:29:10, GNU g++ 4.8.1, std=201103L, MinGW Runtime 3.20, 32-bit, DEBUG
+Started:	Mar 18 2022 20:29:14
+
+Run file:	C:\Users\Gigabyte\Desktop\game\main.exe
+Directory:	C:\Users\Gigabyte\Desktop\game
+
+--------------------------------------------------
+
+--------------------------------------------------
+TXLib сообщает:
+
+Программа: C:\Game\game\main.exe, файл: c:\codsb\codeblocks\mingw\include\txlib.h, строка: 13694, функция: bool {anonymous}::TX::txTransparentBlt(HDC, double, double, double, double, HDC, double, double, COLORREF),
+
+Сообщение: Параметр "sourceImage" неверен. Возможно, этот холст не создан, или уже уничтожен, или не загрузилась картинка.
+
+#1: TXLib [Ver: 00173a, Rev: 171, Date: 2021-10-03 23:49:44 +0400], Instance: 0x005072FC (32-bit), Flags: CMdRe0, Thread: 0x1EA0 (Main), GetLastError(): 13 (Недопустимые данные). 
+
+--------------------------------------------------
+Стек вызовов:
+
+# 0 0x00423572 in C:\Game\game\main.exe: txTransparentBlt() at c:/codsb/codeblocks/mingw/include/txlib.h (13694)
+
+# 1 0x0042CFB4 in C:\Game\game\main.exe: drawMoneta() at C:/Game/game/main.cpp (69):
+
+     67: if(moneta.visible)
+     68:     {
+=>   69:         txTransparentBlt (txDC(), moneta.x,moneta.y,30,28,moneta.picture,0,0,TX_WHITE);
+     70:     }
+     71: }
+
+# 2 0x0042D49C in C:\Game\game\main.exe: main() at C:/Game/game/main.cpp (119):
+
+    117:     for(int i=0; i<Kolmoneta; i++)
+    118:     {
+=>  119:     drawMoneta(moneta[i]);
+    120:     }
+    121: 
+
+--------------------------------------------------
+Стек вызовов TX:
+
+# 0 in bool {anonymous}::TX::txTransparentBlt(HDC, double, double, double, double, HDC, double, double, COLORREF) at c:\codsb\codeblocks\mingw\include\txlib.h (13694):
+
+  13692: 
+  13693: $1  if (_TX_HDC_FAILED (destImage))   return false;
+=>13694: $   if (_TX_HDC_FAILED (sourceImage)) return false;
+  13695: 
+  13696:     // Это автоматическое определение размеров картинки (точнее, HDC источника - source) с помощью txGetExtent().
+
+# 1 in void drawMoneta(Moneta) at C:\Game\game\main.cpp (69):
+
+     67: if(moneta.visible)
+     68:     {
+=>   69:         txTransparentBlt (txDC(), moneta.x,moneta.y,30,28,moneta.picture,0,0,TX_WHITE);
+     70:     }
+     71: }
+
+--------------------------------------------------
+Developed with:
+
+The Dumb Artist Library (TX Library)
+TXLib [Ver: 00173a, Rev: 171, Date: 2021-10-03 23:49:44 +0400]
+Copyright (C) Ded (Ilya Dedinsky, http://txlib.ru) <mail@txlib.ru>
+See license on: http://txlib.ru
+
+TXLib file:	c:\codsb\codeblocks\mingw\include\txlib.h
+Compiled:	Mar 18 2022 20:30:43, GNU g++ 4.8.1, std=201103L, MinGW Runtime 3.20, 32-bit, DEBUG
+Started:	Mar 18 2022 20:30:47
+
+Run file:	C:\Game\game\main.exe
+Directory:	C:\Game\game
+
+--------------------------------------------------
+
+--------------------------------------------------
+TXLib сообщает:
+
+Программа: C:\Game\game\main.exe, файл: c:\codsb\codeblocks\mingw\include\txlib.h, строка: 13694, функция: bool {anonymous}::TX::txTransparentBlt(HDC, double, double, double, double, HDC, double, double, COLORREF),
+
+Сообщение: Параметр "sourceImage" неверен. Возможно, этот холст не создан, или уже уничтожен, или не загрузилась картинка.
+
+#1: TXLib [Ver: 00173a, Rev: 171, Date: 2021-10-03 23:49:44 +0400], Instance: 0x005072FC (32-bit), Flags: CMdRe0, Thread: 0x2550 (Main), GetLastError(): 13 (Недопустимые данные). 
+
+--------------------------------------------------
+Стек вызовов:
+
+# 0 0x00423572 in C:\Game\game\main.exe: txTransparentBlt() at c:/codsb/codeblocks/mingw/include/txlib.h (13694)
+
+# 1 0x0042CFB4 in C:\Game\game\main.exe: drawMoneta() at C:/Game/game/main.cpp (69):
+
+     67: if(moneta.visible)
+     68:     {
+=>   69:         txTransparentBlt (txDC(), moneta.x,moneta.y,30,28,moneta.picture,0,0,TX_WHITE);
+     70:     }
+     71: }
+
+# 2 0x0042D49C in C:\Game\game\main.exe: main() at C:/Game/game/main.cpp (119):
+
+    117:     for(int i=0; i<Kolmoneta; i++)
+    118:     {
+=>  119:     drawMoneta(moneta[i]);
+    120:     }
+    121: 
+
+--------------------------------------------------
+Стек вызовов TX:
+
+# 0 in bool {anonymous}::TX::txTransparentBlt(HDC, double, double, double, double, HDC, double, double, COLORREF) at c:\codsb\codeblocks\mingw\include\txlib.h (13694):
+
+  13692: 
+  13693: $1  if (_TX_HDC_FAILED (destImage))   return false;
+=>13694: $   if (_TX_HDC_FAILED (sourceImage)) return false;
+  13695: 
+  13696:     // Это автоматическое определение размеров картинки (точнее, HDC источника - source) с помощью txGetExtent().
+
+# 1 in void drawMoneta(Moneta) at C:\Game\game\main.cpp (69):
+
+     67: if(moneta.visible)
+     68:     {
+=>   69:         txTransparentBlt (txDC(), moneta.x,moneta.y,30,28,moneta.picture,0,0,TX_WHITE);
+     70:     }
+     71: }
+
+--------------------------------------------------
+Developed with:
+
+The Dumb Artist Library (TX Library)
+TXLib [Ver: 00173a, Rev: 171, Date: 2021-10-03 23:49:44 +0400]
+Copyright (C) Ded (Ilya Dedinsky, http://txlib.ru) <mail@txlib.ru>
+See license on: http://txlib.ru
+
+TXLib file:	c:\codsb\codeblocks\mingw\include\txlib.h
+Compiled:	Mar 18 2022 20:31:14, GNU g++ 4.8.1, std=201103L, MinGW Runtime 3.20, 32-bit, DEBUG
+Started:	Mar 18 2022 20:31:18
+
+Run file:	C:\Game\game\main.exe
+Directory:	C:\Game\game
+
+--------------------------------------------------
+
+--------------------------------------------------
+TXLib сообщает:
+
+Программа: C:\Game\game\main.exe, файл: c:\codsb\codeblocks\mingw\include\txlib.h, строка: 13694, функция: bool {anonymous}::TX::txTransparentBlt(HDC, double, double, double, double, HDC, double, double, COLORREF),
+
+Сообщение: Параметр "sourceImage" неверен. Возможно, этот холст не создан, или уже уничтожен, или не загрузилась картинка.
+
+#2: TXLib [Ver: 00173a, Rev: 171, Date: 2021-10-03 23:49:44 +0400], Instance: 0x005072FC (32-bit), Flags: CMdRe0, Thread: 0x2550 (Main), GetLastError(): 13 (Недопустимые данные). 
+
+--------------------------------------------------
+Стек вызовов:
+
+# 0 0x00423572 in C:\Game\game\main.exe: txTransparentBlt() at c:/codsb/codeblocks/mingw/include/txlib.h (13694)
+
+# 1 0x0042CFB4 in C:\Game\game\main.exe: drawMoneta() at C:/Game/game/main.cpp (69):
+
+     67: if(moneta.visible)
+     68:     {
+=>   69:         txTransparentBlt (txDC(), moneta.x,moneta.y,30,28,moneta.picture,0,0,TX_WHITE);
+     70:     }
+     71: }
+
+# 2 0x0042D49C in C:\Game\game\main.exe: main() at C:/Game/game/main.cpp (119):
+
+    117:     for(int i=0; i<Kolmoneta; i++)
+    118:     {
+=>  119:     drawMoneta(moneta[i]);
+    120:     }
+    121: 
+
+--------------------------------------------------
+Стек вызовов TX:
+
+# 0 in bool {anonymous}::TX::txTransparentBlt(HDC, double, double, double, double, HDC, double, double, COLORREF) at c:\codsb\codeblocks\mingw\include\txlib.h (13694):
+
+  13692: 
+  13693: $1  if (_TX_HDC_FAILED (destImage))   return false;
+=>13694: $   if (_TX_HDC_FAILED (sourceImage)) return false;
+  13695: 
+  13696:     // Это автоматическое определение размеров картинки (точнее, HDC источника - source) с помощью txGetExtent().
+
+# 1 in void drawMoneta(Moneta) at C:\Game\game\main.cpp (69):
+
+     67: if(moneta.visible)
+     68:     {
+=>   69:         txTransparentBlt (txDC(), moneta.x,moneta.y,30,28,moneta.picture,0,0,TX_WHITE);
+     70:     }
+     71: }
+
+--------------------------------------------------
+Developed with:
+
+The Dumb Artist Library (TX Library)
+TXLib [Ver: 00173a, Rev: 171, Date: 2021-10-03 23:49:44 +0400]
+Copyright (C) Ded (Ilya Dedinsky, http://txlib.ru) <mail@txlib.ru>
+See license on: http://txlib.ru
+
+TXLib file:	c:\codsb\codeblocks\mingw\include\txlib.h
+Compiled:	Mar 18 2022 20:31:14, GNU g++ 4.8.1, std=201103L, MinGW Runtime 3.20, 32-bit, DEBUG
+Started:	Mar 18 2022 20:31:19
+
+Run file:	C:\Game\game\main.exe
+Directory:	C:\Game\game
+
+--------------------------------------------------
+
+--------------------------------------------------
+TXLib сообщает:
+
+Программа: C:\Game\game\main.exe, файл: c:\codsb\codeblocks\mingw\include\txlib.h, строка: 13694, функция: bool {anonymous}::TX::txTransparentBlt(HDC, double, double, double, double, HDC, double, double, COLORREF),
+
+Сообщение: Параметр "sourceImage" неверен. Возможно, этот холст не создан, или уже уничтожен, или не загрузилась картинка.
+
+#1: TXLib [Ver: 00173a, Rev: 171, Date: 2021-10-03 23:49:44 +0400], Instance: 0x005072FC (32-bit), Flags: CMdRe0, Thread: 0x384 (Main), GetLastError(): 13 (Недопустимые данные). 
+
+--------------------------------------------------
+Стек вызовов:
+
+# 0 0x00423572 in C:\Game\game\main.exe: txTransparentBlt() at c:/codsb/codeblocks/mingw/include/txlib.h (13694)
+
+# 1 0x0042CFB4 in C:\Game\game\main.exe: drawMoneta() at C:/Game/game/main.cpp (69):
+
+     67: if(moneta.visible)
+     68:     {
+=>   69:         txTransparentBlt (txDC(), moneta.x,moneta.y,31,29,moneta.picture,0,0,TX_WHITE);
+     70:     }
+     71: }
+
+# 2 0x0042D49C in C:\Game\game\main.exe: main() at C:/Game/game/main.cpp (119):
+
+    117:     for(int i=0; i<Kolmoneta; i++)
+    118:     {
+=>  119:     drawMoneta(moneta[i]);
+    120:     }
+    121: 
+
+--------------------------------------------------
+Стек вызовов TX:
+
+# 0 in bool {anonymous}::TX::txTransparentBlt(HDC, double, double, double, double, HDC, double, double, COLORREF) at c:\codsb\codeblocks\mingw\include\txlib.h (13694):
+
+  13692: 
+  13693: $1  if (_TX_HDC_FAILED (destImage))   return false;
+=>13694: $   if (_TX_HDC_FAILED (sourceImage)) return false;
+  13695: 
+  13696:     // Это автоматическое определение размеров картинки (точнее, HDC источника - source) с помощью txGetExtent().
+
+# 1 in void drawMoneta(Moneta) at C:\Game\game\main.cpp (69):
+
+     67: if(moneta.visible)
+     68:     {
+=>   69:         txTransparentBlt (txDC(), moneta.x,moneta.y,31,29,moneta.picture,0,0,TX_WHITE);
+     70:     }
+     71: }
+
+--------------------------------------------------
+Developed with:
+
+The Dumb Artist Library (TX Library)
+TXLib [Ver: 00173a, Rev: 171, Date: 2021-10-03 23:49:44 +0400]
+Copyright (C) Ded (Ilya Dedinsky, http://txlib.ru) <mail@txlib.ru>
+See license on: http://txlib.ru
+
+TXLib file:	c:\codsb\codeblocks\mingw\include\txlib.h
+Compiled:	Mar 18 2022 20:32:51, GNU g++ 4.8.1, std=201103L, MinGW Runtime 3.20, 32-bit, DEBUG
+Started:	Mar 18 2022 20:32:55
+
+Run file:	C:\Game\game\main.exe
+Directory:	C:\Game\game
+
+--------------------------------------------------
