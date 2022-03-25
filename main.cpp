@@ -60,10 +60,13 @@ void drawSpikes(Spikes spikes)
     txTransparentBlt (txDC(), spikes.x, spikes.y, 100, 100, spikes.picture, 0, 0, TX_WHITE);
 }
 
+void drawMario(Mario mario)
+{
+    txTransparentBlt (txDC(), mario.x, mario.y, 92, 100, mario.picture, 0, 0, TX_WHITE);
+}
+
 void drawMoneta(Moneta moneta)
 {
-
-
 if(moneta.visible)
     {
         txTransparentBlt (txDC(), moneta.x,moneta.y,31,29,moneta.picture,0,0,TX_WHITE);
@@ -72,16 +75,21 @@ if(moneta.visible)
 
 
 int main()
-    {
+{
     txCreateWindow (1800, 900);
     txSetFillColor(TX_BLACK);
-    txRectangle(0,0,1800,900);
-    HDC marios = txLoadImage ("картинки/марио/runMarioRight.bmp");
-    HDC marioright = marios;
+    //txRectangle(0,0,1800,900);
+
+    HDC marioright = txLoadImage ("картинки/марио/runMarioRight.bmp");
     HDC marioleft = txLoadImage ("картинки/марио/runMarioLeft.bmp");
+    HDC marios = marioright;
 
     Mario mario = {350,750,0,marios,marioright,marioleft, 750};
 
+    string PAGE = "Меню";
+
+
+    int level=1;
     int kolm=0;
 
     int Kolblock = 3;
@@ -102,128 +110,226 @@ int main()
     int kolspikes = 3;
     Spikes spikes[100];
     spikes[0] = {450,450, txLoadImage ("картинки/предметы/Spikes.bmp")};
-    spikes[1] = {1150,750, txLoadImage ("картинки/предметы/Spikes.bmp")};
-    spikes[2] = {1350,750, txLoadImage ("картинки/предметы/Spikes.bmp")};
+    spikes[1] = {1150,750, spikes[0].picture};
+    spikes[2] = {1350,750, spikes[0].picture};
 
-while(!GetAsyncKeyState(VK_ESCAPE))
+    int ExitX = 800, ExitY = 700;
+
+while(true)
 {
     txClear();
+    txSetColor(TX_WHITE,3);
 
-    for(int i=0; i<Kolblock; i++)
+    if(PAGE=="Меню")
     {
-    drawblock(block[i]);
+
+
+
+
+        //кнопка для старта
+        txRectangle(500,100,700,150);
+        txDrawText(500,100,700,150, "START");
+        //нажатие на кнопку старт
+        if(txMouseX() >= 500 && txMouseY()>=100 &&
+           txMouseX() <= 700 && txMouseY()<=150 &&
+            txMouseButtons() == 1)
+        {
+            PAGE="Игра";
+        }
+        //кнопка ПОМОЩЬ
+        txRectangle(500,200,700,250);
+        txDrawText(500,200,700,250, "HELP");
+        //нажатие на кнопку старт
+        if(txMouseX() >= 500 && txMouseY()>=200 &&
+        txMouseX() <= 700 && txMouseY()<=250 &&
+        txMouseButtons() == 1)
+        {
+            PAGE="help";
+        }
+
+        //кнопка Exit
+        txRectangle(500,500,700,550);
+        txDrawText(500,500,700,550, "EXIT");
+        //нажатие на кнопку выхода
+        if(txMouseX() >= 500 && txMouseY()>=500 &&
+        txMouseX() <= 700 && txMouseY()<=550 &&
+        txMouseButtons() == 1)
+        {
+            return 0;
+        }
+
+         drawMario(mario);
     }
 
-    for(int i=0; i<Kolmoneta; i++)
+    if(PAGE=="help")
     {
-    drawMoneta(moneta[i]);
+        txRectangle(50,50,250,100);
+        txDrawText(50,50,250,100,"Назад");
+        if(txMouseX() >= 50 && txMouseY()>=50 &&
+           txMouseX() <= 250 && txMouseY()<=100 &&
+           txMouseButtons() == 1)
+        {
+            PAGE="Меню";
+        }
+        txSelectFont("Arial",25);
+        txDrawText(300,100,900,600,"Управление:\n"
+                                "D-идти вправо S-идти влево SPACE прыжок"
+        );
     }
 
-    for(int i=0; i<kolkey; i++)
+    if(PAGE=="Игра")
     {
-    drawKey(key[i]);
-    }
+        txBegin();
+        if(GetAsyncKeyState (VK_ESCAPE))
+        {
+            PAGE="Меню";
+        }
 
+        txSetColor(TX_GREEN);
+        txSetFillColor(TX_GREEN);
+        txRectangle(ExitX,ExitY,ExitX+50,ExitY+50);
+        txSetFillColor(TX_BLACK);
+
+        drawMario(mario);
+
+        for(int i=0; i<Kolblock; i++)
+        {
+            drawblock(block[i]);
+        }
+
+        for(int i=0; i<Kolmoneta; i++)
+        {
+            drawMoneta(moneta[i]);
+        }
+
+        for(int i=0; i<kolkey; i++)
+        {
+            drawKey(key[i]);
+        }
+
+        for(int i=0; i<kolspikes; i++)
+        {
+            drawSpikes(spikes[i]);
+        }
+
+//        txSetFillColor(TX_BLACK);
+
+        if(GetAsyncKeyState('D'))
+        {
+            mario.x=mario.x+10;
+            mario.picture=mario.right;
+        }
+        if(GetAsyncKeyState('A'))
+        {
+            mario.x=mario.x-10;
+            mario.picture=mario.left;
+        }
+        if(GetAsyncKeyState(VK_SPACE))
+        {
+            while(GetAsyncKeyState (VK_SPACE))
+            txSleep(50);
+            mario.vy=-30;
+        }
+
+        mario.y=mario.y+mario.vy;
+        mario.vy=mario.vy+3;
+
+        sprintf(strmario, "Монет = %d", kolm);
+        txTextOut(900, 25, strmario);
+        sprintf(strmario, "Уровень = %d", level);
+        txTextOut(900, 50, strmario);
+
+
+        if(mario.y>mario.floor)
+            mario.y=mario.floor;
+
+        for(int x=mario.x; x<mario.x+92; x=x+5)
+        {
+            for(int y=mario.y; y<mario.y+100; y=y+5)
+            {
+                if(txGetPixel(x, y) == TX_ORANGE)
+                    mario.y = block[0].y+10;
+            }
+        }
+
+        if((mario.x>block[0].x-block[0].w && mario.x<block[0].x+block[0].w) && mario.y<block[0].y)
+            mario.floor = block[0].y-100;
+        if((mario.x>block[1].x-block[1].w && mario.x<block[1].x+block[1].w) && mario.y<block[1].y)
+            mario.floor = block[1].y-100;
+        if((mario.x>block[2].x-block[2].w && mario.x<block[2].x+block[2].w) && mario.y<block[2].y)
+            mario.floor = block[2].y-100;
+
+
+        if(!(mario.x>block[0].x-block[0].w && mario.x<block[0].x+block[0].w) &&
+           !(mario.x>block[1].x-block[1].w && mario.x<block[1].x+block[1].w) &&
+           !(mario.x>block[2].x-block[2].w && mario.x<block[2].x+block[2].w))
+            mario.floor = 750;
+
+
+
+    //система монет
+        for(int i=0; i<Kolmoneta; i++)
+        {
+            if(mario.x==moneta[i].x && mario.y==moneta[i].y && moneta[i].visible)
+            {
+                moneta[i].visible = false;
+                kolm=kolm+1;
+            }
+        }
+
+    //ключи
+        for(int i=0; i<kolkey; i++)
+        {
+            if(mario.x==key[i].x && mario.y==key[i].y && key[i].visible)
+            {
+                key[i].visible = false;
+            }
+        }
+
+    //механика шипов
     for(int i=0; i<kolspikes; i++)
-    {
-    drawSpikes(spikes[i]);
-    }
-
-    txSetFillColor(TX_BLACK);
-
-
-
-
-    txTransparentBlt (txDC(), mario.x,mario.y,92,100,mario.picture,0,0, TX_WHITE);
-
-    if(GetAsyncKeyState('D'))
-    {
-        mario.x=mario.x+10;
-        mario.picture=mario.right;
-    }
-    if(GetAsyncKeyState('A'))
-    {
-        mario.x=mario.x-10;
-        mario.picture=mario.left;
-    }
-    if(GetAsyncKeyState(VK_SPACE))
-    {
-        while(GetAsyncKeyState (VK_SPACE))
-        txSleep(50);
-        mario.vy=-30;
-    }
-
-
-    mario.y=mario.y+mario.vy;
-    mario.vy=mario.vy+3;
-
-    sprintf(strmario, "Монет = %d", kolm);
-    txTextOut(50, 50, strmario);
-
-
-    if(mario.y>mario.floor)
-        mario.y=mario.floor;
-
-    for(int x=mario.x; x<mario.x+92; x=x+5)
-    {
-        for(int y=mario.y; y<mario.y+100; y=y+5)
         {
-            if(txGetPixel(x, y) == TX_ORANGE)
-                mario.y = block[0].y+10;
+            if(mario.x+20 > spikes[i].x && mario.x+70 < spikes[i].x+100 &&
+               mario.y+20 > spikes[i].y && mario.y+80 < spikes[i].y+100)
+            {
+            txTextOut(900, 450,"GAME OVER");
+            }
         }
-    }
-
-    if((mario.x>block[0].x-block[0].w && mario.x<block[0].x+block[0].w) && mario.y<block[0].y)
-        mario.floor = block[0].y-100;
-    if((mario.x>block[1].x-block[1].w && mario.x<block[1].x+block[1].w) && mario.y<block[1].y)
-        mario.floor = block[1].y-100;
-    if((mario.x>block[2].x-block[2].w && mario.x<block[2].x+block[2].w) && mario.y<block[2].y)
-        mario.floor = block[2].y-100;
 
 
-    if(!(mario.x>block[0].x-block[0].w && mario.x<block[0].x+block[0].w) &&
-       !(mario.x>block[1].x-block[1].w && mario.x<block[1].x+block[1].w) &&
-       !(mario.x>block[2].x-block[2].w && mario.x<block[2].x+block[2].w))
-        mario.floor = 750;
-
-
-//система монет
-    for(int i=0; i<Kolmoneta; i++)
-    {
-        if(mario.x==moneta[i].x && mario.y==moneta[i].y && moneta[i].visible)
+        if (txGetPixel(mario.x+40, mario.y) == TX_GREEN)
         {
-            moneta[i].visible = false;
-            kolm=kolm+1;
+            txSetColor(TX_ORANGE,3);
+            txSelectFont("Time", 50);
+            txTextOut(50, 50, "Уровень пройден!");
+            txSleep(5000);
+            ExitX = 1200;
+            ExitY = 500;
+            level++;
         }
-    }
 
-//ключи
-    for(int i=0; i<kolkey; i++)
-    {
-        if(mario.x==key[i].x && mario.y==key[i].y && key[i].visible)
+        if(level==2 && txGetPixel(mario.x,mario.y) == TX_GREEN)
         {
-            key[i].visible = false;
+            mario.x=100;
+            mario.y=750;
+            block[0] = {150, 550, 200};
+            block[1] = {950, 550, 100};
+            block[2] = {450, 400, 100};
+            spikes[0] = {1150,750, spikes[0].picture};
+            spikes[1] = {11,750, spikes[0].picture};
+            spikes[2] = {150,750, spikes[0].picture};
         }
+        txSetColor(TX_BLACK);
+        txSetFillColor(TX_BLACK);
+        txEnd();
+
     }
-
-//механика шипов
-for(int i=0; i<kolspikes; i++)
-    {
-        if(mario.x==spikes[i].x && mario.y==spikes[i].y)
-        {
-        txTextOut(900, 450,"GAME OVER");
-        }
-    }
-
-txSleep(15);
-txEnd();
-}
-
+txSleep(20);
 
 txDeleteDC(marioright);
 txDeleteDC(marioleft);
 
+}
 
-    return 0;
-    }
-
+return 0;
+}
