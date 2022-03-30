@@ -1,4 +1,5 @@
 #include "TXLib.h"
+
 struct Key
 {
 int x;
@@ -26,11 +27,14 @@ struct Mario
  int x;
  int y;
  int vy;
- HDC picture ;
- HDC right ;
- HDC left ;
+ HDC picture;
  int floor;
 };
+
+void drawMario(Mario mario)
+{
+    txTransparentBlt (txDC(), mario.x, mario.y, 92, 100, mario.picture, 0, 0, TX_WHITE);
+}
 
 struct Block
 {
@@ -43,7 +47,6 @@ void drawblock(Block block)
 {
     txSetColor(TX_ORANGE);
     txSetFillColor(TX_ORANGE);
-
     txRectangle(block.x,block.y,block.x+block.w,block.y+10);
 }
 
@@ -60,10 +63,7 @@ void drawSpikes(Spikes spikes)
     txTransparentBlt (txDC(), spikes.x, spikes.y, 100, 100, spikes.picture, 0, 0, TX_WHITE);
 }
 
-void drawMario(Mario mario)
-{
-    txTransparentBlt (txDC(), mario.x, mario.y, 92, 100, mario.picture, 0, 0, TX_WHITE);
-}
+
 
 void drawMoneta(Moneta moneta)
 {
@@ -77,14 +77,18 @@ if(moneta.visible)
 int main()
 {
     txCreateWindow (1800, 900);
+
+    txSetColor(TX_WHITE,3);
     txSetFillColor(TX_BLACK);
-    //txRectangle(0,0,1800,900);
+
+    txDisableAutoPause();
 
     HDC marioright = txLoadImage ("картинки/марио/runMarioRight.bmp");
     HDC marioleft = txLoadImage ("картинки/марио/runMarioLeft.bmp");
-    HDC marios = marioright;
 
-    Mario mario = {350,750,0,marios,marioright,marioleft, 750};
+    Mario mario = {350, 750, 0, marioright, 750};
+
+
 
     string PAGE = "Меню";
 
@@ -118,13 +122,15 @@ int main()
 while(true)
 {
     txClear();
-    txSetColor(TX_WHITE,3);
+
 
     if(PAGE=="Меню")
     {
 
+        txSetColor(TX_WHITE,3);
+        txSetFillColor(TX_BLACK);
 
-
+        txTransparentBlt (txDC(), 100, 100, 92, 100, marioright, 0, 0, TX_WHITE);
 
         //кнопка для старта
         txRectangle(500,100,700,150);
@@ -158,11 +164,14 @@ while(true)
             return 0;
         }
 
-         drawMario(mario);
+
+
     }
 
     if(PAGE=="help")
     {
+        txSetColor(TX_WHITE,3);
+        txSetFillColor(TX_BLACK);
         txRectangle(50,50,250,100);
         txDrawText(50,50,250,100,"Назад");
         if(txMouseX() >= 50 && txMouseY()>=50 &&
@@ -179,19 +188,26 @@ while(true)
 
     if(PAGE=="Игра")
     {
+        txSetColor(TX_WHITE,3);
+        txSetFillColor(TX_BLACK);
+
         txBegin();
+
         if(GetAsyncKeyState (VK_ESCAPE))
         {
             PAGE="Меню";
         }
-
+         /*
         txSetColor(TX_GREEN);
         txSetFillColor(TX_GREEN);
         txRectangle(ExitX,ExitY,ExitX+50,ExitY+50);
-        txSetFillColor(TX_BLACK);
+        txSetFillColor(TX_BLACK); */
 
-        drawMario(mario);
+        //drawMario(mario);
 
+        txTransparentBlt (txDC(), 100, 500, 92, 100, marioright, 0, 0, TX_WHITE);
+
+        /*
         for(int i=0; i<Kolblock; i++)
         {
             drawblock(block[i]);
@@ -211,18 +227,18 @@ while(true)
         {
             drawSpikes(spikes[i]);
         }
-
+        */
 //        txSetFillColor(TX_BLACK);
 
         if(GetAsyncKeyState('D'))
         {
             mario.x=mario.x+10;
-            mario.picture=mario.right;
+            mario.picture=marioright;
         }
         if(GetAsyncKeyState('A'))
         {
             mario.x=mario.x-10;
-            mario.picture=mario.left;
+            mario.picture=marioleft;
         }
         if(GetAsyncKeyState(VK_SPACE))
         {
@@ -242,7 +258,7 @@ while(true)
 
         if(mario.y>mario.floor)
             mario.y=mario.floor;
-
+        /*
         for(int x=mario.x; x<mario.x+92; x=x+5)
         {
             for(int y=mario.y; y<mario.y+100; y=y+5)
@@ -251,7 +267,7 @@ while(true)
                     mario.y = block[0].y+10;
             }
         }
-
+        */
         if((mario.x>block[0].x-block[0].w && mario.x<block[0].x+block[0].w) && mario.y<block[0].y)
             mario.floor = block[0].y-100;
         if((mario.x>block[1].x-block[1].w && mario.x<block[1].x+block[1].w) && mario.y<block[1].y)
@@ -266,7 +282,7 @@ while(true)
             mario.floor = 750;
 
 
-
+/*
     //система монет
         for(int i=0; i<Kolmoneta; i++)
         {
@@ -318,9 +334,8 @@ while(true)
             spikes[0] = {1150,750, spikes[0].picture};
             spikes[1] = {11,750, spikes[0].picture};
             spikes[2] = {150,750, spikes[0].picture};
-        }
-        txSetColor(TX_BLACK);
-        txSetFillColor(TX_BLACK);
+        } */
+
         txEnd();
 
     }

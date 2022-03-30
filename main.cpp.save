@@ -1,4 +1,5 @@
 #include "TXLib.h"
+
 struct Key
 {
 int x;
@@ -32,6 +33,11 @@ struct Mario
  int floor;
 };
 
+void drawMario(Mario mario)
+{
+    txTransparentBlt (txDC(), mario.x, mario.y, 92, 100, mario.picture, 0, 0, TX_WHITE);
+}
+
 struct Block
 {
 int x;
@@ -43,7 +49,6 @@ void drawblock(Block block)
 {
     txSetColor(TX_ORANGE);
     txSetFillColor(TX_ORANGE);
-
     txRectangle(block.x,block.y,block.x+block.w,block.y+10);
 }
 
@@ -60,10 +65,7 @@ void drawSpikes(Spikes spikes)
     txTransparentBlt (txDC(), spikes.x, spikes.y, 100, 100, spikes.picture, 0, 0, TX_WHITE);
 }
 
-void drawMario(Mario mario)
-{
-    txTransparentBlt (txDC(), mario.x, mario.y, 92, 100, mario.picture, 0, 0, TX_WHITE);
-}
+
 
 void drawMoneta(Moneta moneta)
 {
@@ -77,8 +79,11 @@ if(moneta.visible)
 int main()
 {
     txCreateWindow (1800, 900);
-    txSetFillColor(TX_BLACK);
-    txRectangle(0,0,1800,900);
+
+    txDisableAutoPause();
+
+    //txSetFillColor(TX_BLACK);
+    //txRectangle(0,0,1800,900);
 
     HDC marioright = txLoadImage ("картинки/марио/runMarioRight.bmp");
     HDC marioleft = txLoadImage ("картинки/марио/runMarioLeft.bmp");
@@ -118,10 +123,13 @@ int main()
 while(true)
 {
     txClear();
-    txSetColor(TX_WHITE,3);
 
     if(PAGE=="Меню")
     {
+
+        txSetColor(TX_WHITE,3);
+        txSetFillColor(TX_BLACK);
+
         //кнопка для старта
         txRectangle(500,100,700,150);
         txDrawText(500,100,700,150, "START");
@@ -153,6 +161,7 @@ while(true)
         {
             return 0;
         }
+
     }
 
     if(PAGE=="help")
@@ -173,19 +182,22 @@ while(true)
 
     if(PAGE=="Игра")
     {
+
+
         txBegin();
+        /*
         if(GetAsyncKeyState (VK_ESCAPE))
         {
             PAGE="Меню";
         }
-
+         /*
         txSetColor(TX_GREEN);
         txSetFillColor(TX_GREEN);
         txRectangle(ExitX,ExitY,ExitX+50,ExitY+50);
-        txSetFillColor(TX_BLACK);
+        txSetFillColor(TX_BLACK); */
 
         drawMario(mario);
-
+        /*
         for(int i=0; i<Kolblock; i++)
         {
             drawblock(block[i]);
@@ -205,7 +217,7 @@ while(true)
         {
             drawSpikes(spikes[i]);
         }
-
+        */
 //        txSetFillColor(TX_BLACK);
 
         if(GetAsyncKeyState('D'))
@@ -236,7 +248,7 @@ while(true)
 
         if(mario.y>mario.floor)
             mario.y=mario.floor;
-
+        /*
         for(int x=mario.x; x<mario.x+92; x=x+5)
         {
             for(int y=mario.y; y<mario.y+100; y=y+5)
@@ -245,7 +257,7 @@ while(true)
                     mario.y = block[0].y+10;
             }
         }
-
+        */
         if((mario.x>block[0].x-block[0].w && mario.x<block[0].x+block[0].w) && mario.y<block[0].y)
             mario.floor = block[0].y-100;
         if((mario.x>block[1].x-block[1].w && mario.x<block[1].x+block[1].w) && mario.y<block[1].y)
@@ -260,7 +272,7 @@ while(true)
             mario.floor = 750;
 
 
-
+/*
     //система монет
         for(int i=0; i<Kolmoneta; i++)
         {
@@ -312,9 +324,9 @@ while(true)
             spikes[0] = {1150,750, spikes[0].picture};
             spikes[1] = {11,750, spikes[0].picture};
             spikes[2] = {150,750, spikes[0].picture};
-        }
-        txSetColor(TX_BLACK);
-        txSetFillColor(TX_BLACK);
+        } */
+        //txSetColor(TX_BLACK);
+        //txSetFillColor(TX_BLACK);
         txEnd();
 
     }
