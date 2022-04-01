@@ -88,10 +88,9 @@ int main()
 
     Mario mario = {350, 750, 0, marioright, 750};
 
-
+    char strmario[100];
 
     string PAGE = "Меню";
-
 
     int level=1;
     int kolm=0;
@@ -101,7 +100,7 @@ int main()
     block[0] = {450, 550, 200};
     block[1] = {650, 550, 100};
     block[2] = {850, 400, 100};
-    char strmario[100];
+
 
     int Kolmoneta = 3;
     Moneta moneta[100];
@@ -124,13 +123,12 @@ while(true)
     txClear();
 
 
+
+
     if(PAGE=="Меню")
     {
-
         txSetColor(TX_WHITE,3);
         txSetFillColor(TX_BLACK);
-
-        txTransparentBlt (txDC(), 100, 100, 92, 100, marioright, 0, 0, TX_WHITE);
 
         //кнопка для старта
         txRectangle(500,100,700,150);
@@ -142,6 +140,7 @@ while(true)
         {
             PAGE="Игра";
         }
+
         //кнопка ПОМОЩЬ
         txRectangle(500,200,700,250);
         txDrawText(500,200,700,250, "HELP");
@@ -164,27 +163,30 @@ while(true)
             return 0;
         }
 
-
-
     }
 
     if(PAGE=="help")
     {
         txSetColor(TX_WHITE,3);
         txSetFillColor(TX_BLACK);
-        txRectangle(50,50,250,100);
-        txDrawText(50,50,250,100,"Назад");
-        if(txMouseX() >= 50 && txMouseY()>=50 &&
-           txMouseX() <= 250 && txMouseY()<=100 &&
-           txMouseButtons() == 1)
+
+        txRectangle(100,200,300,250);
+        txDrawText(100,200,300,250, "BACK");
+        //нажатие на кнопку старт
+        if(txMouseX() >= 100 && txMouseY()>=200 &&
+        txMouseX() <= 300 && txMouseY()<=250 &&
+        txMouseButtons() == 1)
         {
             PAGE="Меню";
         }
+
         txSelectFont("Arial",25);
         txDrawText(300,100,900,600,"Управление:\n"
                                 "D-идти вправо S-идти влево SPACE прыжок"
         );
     }
+
+
 
     if(PAGE=="Игра")
     {
@@ -197,17 +199,16 @@ while(true)
         {
             PAGE="Меню";
         }
-         /*
+
         txSetColor(TX_GREEN);
         txSetFillColor(TX_GREEN);
         txRectangle(ExitX,ExitY,ExitX+50,ExitY+50);
-        txSetFillColor(TX_BLACK); */
+        txSetFillColor(TX_BLACK);
 
-        //drawMario(mario);
+        drawMario(mario);
 
-        txTransparentBlt (txDC(), 100, 500, 92, 100, marioright, 0, 0, TX_WHITE);
 
-        /*
+
         for(int i=0; i<Kolblock; i++)
         {
             drawblock(block[i]);
@@ -227,8 +228,8 @@ while(true)
         {
             drawSpikes(spikes[i]);
         }
-        */
-//        txSetFillColor(TX_BLACK);
+
+        txSetFillColor(TX_BLACK);
 
         if(GetAsyncKeyState('D'))
         {
@@ -256,9 +257,12 @@ while(true)
         txTextOut(900, 50, strmario);
 
 
+
+
+
         if(mario.y>mario.floor)
             mario.y=mario.floor;
-        /*
+
         for(int x=mario.x; x<mario.x+92; x=x+5)
         {
             for(int y=mario.y; y<mario.y+100; y=y+5)
@@ -267,7 +271,7 @@ while(true)
                     mario.y = block[0].y+10;
             }
         }
-        */
+
         if((mario.x>block[0].x-block[0].w && mario.x<block[0].x+block[0].w) && mario.y<block[0].y)
             mario.floor = block[0].y-100;
         if((mario.x>block[1].x-block[1].w && mario.x<block[1].x+block[1].w) && mario.y<block[1].y)
@@ -282,7 +286,7 @@ while(true)
             mario.floor = 750;
 
 
-/*
+
     //система монет
         for(int i=0; i<Kolmoneta; i++)
         {
@@ -308,7 +312,7 @@ while(true)
             if(mario.x+20 > spikes[i].x && mario.x+70 < spikes[i].x+100 &&
                mario.y+20 > spikes[i].y && mario.y+80 < spikes[i].y+100)
             {
-            txTextOut(900, 450,"GAME OVER");
+                txTextOut(900, 450,"GAME OVER");
             }
         }
 
@@ -334,17 +338,19 @@ while(true)
             spikes[0] = {1150,750, spikes[0].picture};
             spikes[1] = {11,750, spikes[0].picture};
             spikes[2] = {150,750, spikes[0].picture};
-        } */
+        }
 
         txEnd();
 
-    }
-txSleep(20);
 
+   }
+    txSleep(20);
+
+}
 txDeleteDC(marioright);
 txDeleteDC(marioleft);
 
-}
+
 
 return 0;
 }
